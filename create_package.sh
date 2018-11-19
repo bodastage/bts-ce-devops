@@ -28,12 +28,12 @@ mkdir -p $MEDIATION_DIR
 mkdir -p $MEDIATION_DIR/{ericsson,huawei,nokia,zte}/{in,out,parsed,raw}
 
 # Ericsson
-mkdir -p $MEDIATION_DIR/ericsson/{raw,parsed}/{bulckm,eaw,cnaiv2,backup}
+mkdir -p $MEDIATION_DIR/ericsson/{raw,parsed}/{bulkcm,eaw,cnaiv2,backup}
 
 #Huawei
 mkdir -p $MEDIATION_DIR/huawei/{raw,parsed}/gexport_{gsm,wcdma,lte,cdma,sran,others}
 mkdir -p $MEDIATION_DIR/huawei/{raw,parsed}/nbi_{gsm,umts,lte,sran}
-mkdir -p $MEDIATION_DIR/huawei/{raw,parsed}/mml_{gsm,umts}
+mkdir -p $MEDIATION_DIR/huawei/{raw,parsed}/mml_{gsm,umts,lte}
 mkdir -p $MEDIATION_DIR/huawei/{raw,parsed}/cfgsyn
 mkdir -p $MEDIATION_DIR/huawei/{raw,parsed}/backup
 
