@@ -31,20 +31,13 @@ mkdir -p $MEDIATION_DIR/{ericsson,huawei,nokia,zte}/{in,out,parsed,raw}
 mkdir -p $MEDIATION_DIR/ericsson/{raw,parsed}/{bulckm,eaw,cnaiv2,backup}
 
 #Huawei
-mkdir -p $MEDIATION_DIR/huawei/{raw,parsed}/gexport_{gsm,wcdma,lte,cdma,sran,others}
-mkdir -p $MEDIATION_DIR/huawei/{raw,parsed}/nbi_{gsm,umts,lte,sran}
-mkdir -p $MEDIATION_DIR/huawei/{raw,parsed}/mml_{gsm,umts}
-mkdir -p $MEDIATION_DIR/huawei/{raw,parsed}/cfgsyn
-mkdir -p $MEDIATION_DIR/huawei/{raw,parsed}/backup
+mkdir -p $MEDIATION_DIR/huawei/{raw,parsed}/{gexport,mml,cfgsyn,backup,nbi}
 
 #ZTE
-mkdir -p $MEDIATION_DIR/zte/{raw,parsed}/bulkcm_{gsm,umts,lte}
-mkdir -p $MEDIATION_DIR/zte/{raw,parsed}/backup
+mkdir -p $MEDIATION_DIR/zte/{raw,parsed}/{bulkcm,backukp}
 
 #Nokia
-mkdir -p $MEDIATION_DIR/nokia/{raw,parsed}/raml2_{gsm,umts,lte}
-mkdir -p $MEDIATION_DIR/nokia/{raw,parsed}/backup
-
+mkdir -p $MEDIATION_DIR/nokia/{raw,parsed}/{raml2,backup}
 
 # API
 # ------------------------
