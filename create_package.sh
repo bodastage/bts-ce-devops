@@ -2,7 +2,13 @@
 
 cur_dir=$(realpath $(dirname $0))
 
-version='v1.0.23'
+if [ "$1" = "" ]
+then
+   echo "Version is needed"
+   exit 1
+fi
+
+version=$1
 
 set -x 
 
@@ -21,7 +27,6 @@ cd bts-ce
 
 
 #Step 3: Create the cm data folders for supported vendors 
-
 # create mediation directories 
 MEDIATION_DIR=mediation/data/cm
 mkdir -p $MEDIATION_DIR
@@ -31,21 +36,14 @@ mkdir -p $MEDIATION_DIR/{ericsson,huawei,nokia,zte}/{in,out,parsed,raw}
 mkdir -p $MEDIATION_DIR/ericsson/{raw,parsed}/{bulkcm,eaw,cnaiv2,backup}
 
 #Huawei
-<<<<<<< HEAD
-mkdir -p $MEDIATION_DIR/huawei/{raw,parsed}/{gexport,mml,cfgsyn,backup,nbi}
-=======
-mkdir -p $MEDIATION_DIR/huawei/{raw,parsed}/gexport_{gsm,wcdma,lte,cdma,sran,others}
-mkdir -p $MEDIATION_DIR/huawei/{raw,parsed}/nbi_{gsm,umts,lte,sran}
-mkdir -p $MEDIATION_DIR/huawei/{raw,parsed}/mml_{gsm,umts,lte}
-mkdir -p $MEDIATION_DIR/huawei/{raw,parsed}/cfgsyn
-mkdir -p $MEDIATION_DIR/huawei/{raw,parsed}/backup
->>>>>>> d0e6a375c89dfab3d303ab1658c10254d5019a98
+mkdir -p $MEDIATION_DIR/huawei/{raw,parsed}/{gexport,nbi,mml,cfgsyn,rnp,backup}
 
 #ZTE
-mkdir -p $MEDIATION_DIR/zte/{raw,parsed}/{bulkcm,backukp}
+mkdir -p $MEDIATION_DIR/zte/{raw,parsed}/{bulkcm,xls,backup}
 
 #Nokia
 mkdir -p $MEDIATION_DIR/nokia/{raw,parsed}/{raml2,backup}
+
 
 # API
 # ------------------------
@@ -70,18 +68,18 @@ rm -rf web/.git
 rm -rf web/.gitignore
 
 # build 
-cd web 
-npm install
-npm run build
-for f in `ls -1 | grep -v dist`
-do
-	rm -rf $f
-done 
-
-cp -r dist/* ./ 
-
-rm -rf dist
-cd ..
+#cd web 
+#npm install
+#npm run build
+#for f in `ls -1 | grep -v dist`
+#do
+#	rm -rf $f
+#done 
+#
+#cp -r dist/* ./ 
+#
+#rm -rf dist
+#cd ..
 
 # Docs 
 # ----------------------
