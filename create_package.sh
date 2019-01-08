@@ -25,6 +25,10 @@ git clone --recurse-submodules https://github.com/bodastage/bts-ce.git
 
 cd bts-ce 
 
+# 
+dos2unix db/setup/create_bts_database.sh
+
+
 
 #Step 3: Create the cm data folders for supported vendors 
 # create mediation directories 
