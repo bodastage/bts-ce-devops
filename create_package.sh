@@ -25,31 +25,37 @@ git clone --recurse-submodules https://github.com/bodastage/bts-ce.git
 
 cd bts-ce 
 
-# 
+# fix windows newlines
 dos2unix db/setup/create_bts_database.sh
+dos2unix queue_scripts/queue_setup.sh
 
+CM_DATA_DIR=mediation
+
+# Create reports folder
+mkdir -p mediation/data/reports
 
 
 #Step 3: Create the cm data folders for supported vendors 
 # create mediation directories 
-MEDIATION_DIR=mediation/data/cm
-mkdir -p $MEDIATION_DIR
-mkdir -p $MEDIATION_DIR/{ericsson,huawei,nokia,zte}/{in,out,parsed,raw}
+CM_DATA_DIR=mediation/data/cm
+
+mkdir -p $CM_DATA_DIR
+mkdir -p $CM_DATA_DIR/{ericsson,huawei,nokia,zte}/{in,out,parsed,raw}
 
 # Ericsson
-mkdir -p $MEDIATION_DIR/ericsson/{raw,parsed}/{bulkcm,eaw,cnaiv2,backup}
+mkdir -p $CM_DATA_DIR/ericsson/{raw,parsed}/{bulkcm,eaw,cnaiv2,backup}
 
 #Huawei
-mkdir -p $MEDIATION_DIR/huawei/{raw,parsed}/{gexport,nbi,mml,cfgsyn,rnp,backup}
+mkdir -p $CM_DATA_DIR/huawei/{raw,parsed}/{gexport,nbi,mml,cfgsyn,rnp,backup}
 
 #ZTE
-mkdir -p $MEDIATION_DIR/zte/{raw,parsed}/{bulkcm,xls,backup}
+mkdir -p $CM_DATA_DIR/zte/{raw,parsed}/{bulkcm,xls,backup}
 
 #Nokia
-mkdir -p $MEDIATION_DIR/nokia/{raw,parsed}/{raml2,backup}
+mkdir -p $CM_DATA_DIR/nokia/{raw,parsed}/{raml2,backup}
 
 
-# API
+# API Service
 # ------------------------
 mv bts-ce-api api
 
@@ -57,7 +63,7 @@ mv bts-ce-api api
 rm -rf api/.git
 rm -rf api/.gitignore
 
-# Database 
+# Database Service
 # ------------------------
 mv bts-ce-database database 
 rm -rf database/.git
@@ -65,7 +71,7 @@ rm -rf database/.gitignore
 rm -rf database/.idea
 
 
-# Web 
+# Web Client Service
 # -----------------------------
 mv bts-ce-web web 
 rm -rf web/.git
@@ -106,14 +112,23 @@ done
 
 cd ..
 
+# Reports 
+# ----------------------
+mv bts-ce-reports reports 
+rm -rf reports/.git
+rm -rf reports/.gitignore
 
 # Update docker-compose.yml
 sed -i 's/\.\/bts-ce-api/\.\/api/' docker-compose.yml
 sed -i 's/\.\/bts-ce-docs/\.\/docs/' docker-compose.yml
 sed -i 's/\.\/bts-ce-web\/dist/\.\/web/' docker-compose.yml
 sed -i 's/\.\/bts-ce-database/\.\/database/' docker-compose.yml
+sed -i 's/\.\/bts-ce-reports/\.\/reports/' docker-compose.yml
 
 cd $cur_dir/tmp 
+
+# Add version to VERSION file
+echo ${version} > ./bts-ce/VERSION
 
 # 
 7z a -tzip bts-ce-${version}.zip ./bts-ce/*
