@@ -1,5 +1,5 @@
 # bts-ce-release
-Boda Telecom Suite - CE release management scripts. This creates a zip file in the format: *bts-ce-vMAJOR.MINOR.PATCH.zip* e.g bts-ce-v2.0.0
+Boda Telecom Suite - CE release management scripts. This creates a zip file in the format: *bts-ce-vMAJOR.MINOR.PATCH.zip* e.g bts-ce-v2.0.0.zip
 
 
 
