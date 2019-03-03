@@ -1,2 +1,2 @@
-# bts-ce-devops
+# bts-ce-release
 Boda Telecom Suite - CE release management scripts
